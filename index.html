@@ -12,46 +12,7 @@
 <meta name="robots" content="index, follow">
 <!-- ===== FAVICON ===== -->
 <link rel="icon" type="image/png" href="https://i.imgur.com/DL3Negx.png">
-  /* ===== CONTADOR DIGITAL ===== */
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
-
-.time-box{
-  background: rgba(0,0,0,0.6);
-  padding:14px 18px;
-  border-radius:12px;
-  text-align:center;
-  min-width:75px;
-  backdrop-filter: blur(4px);
-}
-
-.time-box span{
-  display:block;
-  font-size:1.6rem;
-  font-weight:700;
-  color:#fff;
-}
-
-.time-box small{
-  font-size:0.7rem;
-  letter-spacing:1px;
-  color:#ccc;
-}
-
-@media(max-width:480px){
-  .time-box{
-    min-width:65px;
-    padding:10px 12px;
-  }
-  .time-box span{
-    font-size:1.2rem;
-  }
-}
+ 
 <style>
 :root {
   --azul-logo: #4EC4CB;
@@ -397,7 +358,46 @@ document.querySelectorAll('.gallery-slide img').forEach(img=>{
 lightbox.onclick = ()=>{
   lightbox.style.display = 'none';
   document.body.style.overflow = 'auto'; // libera o scroll
-};
+}; /* ===== CONTADOR DIGITAL ===== */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.time-box{
+  background: rgba(0,0,0,0.6);
+  padding:14px 18px;
+  border-radius:12px;
+  text-align:center;
+  min-width:75px;
+  backdrop-filter: blur(4px);
+}
+
+.time-box span{
+  display:block;
+  font-size:1.6rem;
+  font-weight:700;
+  color:#fff;
+}
+
+.time-box small{
+  font-size:0.7rem;
+  letter-spacing:1px;
+  color:#ccc;
+}
+
+@media(max-width:480px){
+  .time-box{
+    min-width:65px;
+    padding:10px 12px;
+  }
+  .time-box span{
+    font-size:1.2rem;
+  }
+}
 </script>
 
 </body>
