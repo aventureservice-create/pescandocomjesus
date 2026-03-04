@@ -12,8 +12,15 @@
 <meta name="robots" content="index, follow">
 <!-- ===== FAVICON ===== -->
 <link rel="icon" type="image/png" href="https://i.imgur.com/DL3Negx.png">
- 
 <style>
+:root {
+  --azul-logo: #4EC4CB;
+  --verde-logo: #25D366;
+  --cinza-logo: #f5f5f5;
+  --laranja-logo: #Ff6600;
+  --branco-logo: #fEFEFE;
+  --preto-logo: #000000;
+}
 
 /* ===== RESET ===== */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
@@ -33,6 +40,30 @@ footer a { color:#cceeff; text-decoration:none; font-weight:500; }
 .hero h2 { font-size:1.3rem; font-weight:500; margin-bottom:20px; }
 .hero .info { font-size:1rem; margin:6px 0; opacity:0.95; }
 
+/* ===== SLIDER HERO ===== */
+.slides { position:absolute; inset:0; z-index:0; }
+.slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1s ease; }
+.slide.active { opacity:1; }
+.arrow { position:absolute; top:50%; transform:translateY(-50%); font-size:2.5rem; color: var(--branco-logo); cursor:pointer; z-index:3; padding:10px; }
+.arrow.left { left:20px; } 
+.arrow.right { right:20px; }
+.dots { position:absolute; bottom:20px; width:100%; text-align:center; z-index:3; }
+.dot { display:inline-block; width:12px; height:12px; border-radius:50%; background: var(--branco-logo); opacity:0.5; margin:0 4px; cursor:pointer; }
+.dot.active { opacity:1; }
+@media (max-width: 768px){
+  .arrow{
+    font-size: 1.2rem;
+    padding: 4px 6px;
+  }
+
+  .arrow.left { left: 8px; }
+  .arrow.right { right: 8px; }
+
+  .dot{
+    width: 7px;
+    height: 7px;
+  }
+}
 /* ===== GALERIA SLIDER ===== */
 .gallery-slider { position: relative; max-width:100%; margin:30px auto 0; overflow:hidden; }
 .gallery-slide { display:none; text-align:center; }
@@ -114,12 +145,6 @@ footer a { color:#cceeff; text-decoration:none; font-weight:500; }
     <h2>O maior torneio de pesca esportiva cristão de Niquelândia</h2>
     <div class="info">📍 Lago Serra da Mesa • Condomínio Pouso Alegre</div>
     <div class="info">📅 18 de abril de 2026</div>
-    <div id="countdown" class="countdown">
-  <div class="time-box"><span id="days">0</span><small>DIAS</small></div>
-  <div class="time-box"><span id="hours">0</span><small>HORAS</small></div>
-  <div class="time-box"><span id="minutes">0</span><small>MIN</small></div>
-  <div class="time-box"><span id="seconds">0</span><small>SEG</small></div>
-</div>
     <a class="btn" href="https://chat.whatsapp.com/G55juPXIamEFQ33lXJRFZz" target="_blank">👉 ENTRAR NO GRUPO OFICIAL</a>
   </div>
 </div>
@@ -212,6 +237,7 @@ footer a { color:#cceeff; text-decoration:none; font-weight:500; }
 
 <!-- LIGHTBOX -->
 <div class="lightbox"><img></div>
+
 <script>
 // ===== SLIDER HERO =====
 const slides = document.querySelectorAll('.slide');
@@ -299,9 +325,8 @@ document.querySelectorAll('.gallery-slide img').forEach(img=>{
 
 lightbox.onclick = ()=>{
   lightbox.style.display = 'none';
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = 'auto'; // libera o scroll
 };
-
 </script>
 
 </body>
