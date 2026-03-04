@@ -50,6 +50,20 @@ footer a { color:#cceeff; text-decoration:none; font-weight:500; }
 .dots { position:absolute; bottom:20px; width:100%; text-align:center; z-index:3; }
 .dot { display:inline-block; width:12px; height:12px; border-radius:50%; background: var(--branco-logo); opacity:0.5; margin:0 4px; cursor:pointer; }
 .dot.active { opacity:1; }
+  @media (max-width: 768px){
+  .arrow{
+    font-size: 1.4rem;
+    padding: 6px;
+  }
+
+  .arrow.left { left: 10px; }
+  .arrow.right { right: 10px; }
+
+  .dot{
+    width: 8px;
+    height: 8px;
+  }
+}
 
 /* ===== GALERIA SLIDER ===== */
 .gallery-slider { position: relative; max-width:100%; margin:30px auto 0; overflow:hidden; }
