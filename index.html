@@ -223,7 +223,14 @@ slides.forEach((_, i) => {
 function showSlide(i){
   slides[index].classList.remove('active');
   dotsContainer.children[index].classList.remove('active');
+
   index = i;
+
+  // carrega imagem apenas quando for usada
+  if (!slides[index].style.backgroundImage) {
+    slides[index].style.backgroundImage = `url('${slides[index].dataset.bg}')`;
+  }
+
   slides[index].classList.add('active');
   dotsContainer.children[index].classList.add('active');
 }
