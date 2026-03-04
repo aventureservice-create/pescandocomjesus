@@ -300,9 +300,17 @@ setInterval(nextSponsorSlide,4000);
 const lightbox = document.querySelector('.lightbox');
 const lbImg = lightbox.querySelector('img');
 document.querySelectorAll('.gallery-slide img').forEach(img=>{
-  img.onclick = ()=>{ lightbox.style.display='flex'; lbImg.src=img.src; }
+  img.onclick = ()=>{
+    lightbox.style.display = 'flex';
+    lbImg.src = img.src;
+    document.body.style.overflow = 'hidden'; // trava o scroll
+  }
 });
-lightbox.onclick = ()=> lightbox.style.display='none';
+
+lightbox.onclick = ()=>{
+  lightbox.style.display = 'none';
+  document.body.style.overflow = 'auto'; // libera o scroll
+};
 </script>
 
 </body>
