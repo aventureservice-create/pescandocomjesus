@@ -14,14 +14,6 @@
 <link rel="icon" type="image/png" href="https://i.imgur.com/DL3Negx.png">
  
 <style>
-:root {
-  --azul-logo: #4EC4CB;
-  --verde-logo: #25D366;
-  --cinza-logo: #f5f5f5;
-  --laranja-logo: #Ff6600;
-  --branco-logo: #fEFEFE;
-  --preto-logo: #000000;
-}
 
 /* ===== RESET ===== */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
@@ -244,32 +236,6 @@ footer a { color:#cceeff; text-decoration:none; font-weight:500; }
 
 <!-- LIGHTBOX -->
 <div class="lightbox"><img></div>
-  // ===== CONTADOR REGRESSIVO =====
-const eventDate = new Date("April 18, 2026 00:00:00").getTime();
-
-function updateCountdown(){
-  const now = new Date().getTime();
-  const distance = eventDate - now;
-
-  if(distance < 0){
-    document.getElementById("countdown").innerHTML = "🎉 O EVENTO COMEÇOU!";
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("days").textContent = days;
-  document.getElementById("hours").textContent = hours;
-  document.getElementById("minutes").textContent = minutes;
-  document.getElementById("seconds").textContent = seconds;
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
 <script>
 // ===== SLIDER HERO =====
 const slides = document.querySelectorAll('.slide');
@@ -358,46 +324,7 @@ document.querySelectorAll('.gallery-slide img').forEach(img=>{
 lightbox.onclick = ()=>{
   lightbox.style.display = 'none';
   document.body.style.overflow = 'auto'; // libera o scroll
-}; /* ===== CONTADOR DIGITAL ===== */
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
 
-.time-box{
-  background: rgba(0,0,0,0.6);
-  padding:14px 18px;
-  border-radius:12px;
-  text-align:center;
-  min-width:75px;
-  backdrop-filter: blur(4px);
-}
-
-.time-box span{
-  display:block;
-  font-size:1.6rem;
-  font-weight:700;
-  color:#fff;
-}
-
-.time-box small{
-  font-size:0.7rem;
-  letter-spacing:1px;
-  color:#ccc;
-}
-
-@media(max-width:480px){
-  .time-box{
-    min-width:65px;
-    padding:10px 12px;
-  }
-  .time-box span{
-    font-size:1.2rem;
-  }
-}
 </script>
 
 </body>
