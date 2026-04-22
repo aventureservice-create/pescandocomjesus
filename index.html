@@ -1,340 +1,656 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Torneio de Pesca em Niquelândia 2026 | Pescando com Jesus</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pescando com Jesus 2026</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="https://i.imgur.com/0V0olPd.jpeg">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<!-- ===== SEO META TAGS ===== -->
-<meta name="description" content="Torneio de pesca em Niquelândia 2026 no Lago Serra da Mesa. Participe do Pescando com Jesus, o maior torneio de pesca esportiva cristão da região.">
-<meta name="keywords" content="pesca esportiva, pesca cristã, Niquelândia, Lago Serra da Mesa, torneio de pesca, evento cristão">
-<meta name="robots" content="index, follow">
-<!-- ===== FAVICON ===== -->
-<link rel="icon" type="image/png" href="https://i.imgur.com/DL3Negx.png">
 <style>
-:root {
-  --azul-logo: #4EC4CB;
-  --verde-logo: #25D366;
-  --cinza-logo: #f5f5f5;
-  --laranja-logo: #Ff6600;
-  --branco-logo: #fEFEFE;
-  --preto-logo: #000000;
+  
+:root{
+  --azul:#4EC4CB;
+  --verde:#25D366;
+  --cinza:#f5f5f5;
 }
 
-/* ===== RESET ===== */
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
-body { background-color: var(--branco-logo); color: var(--preto-logo); line-height:1.6; }
-section { padding:56px 20px; max-width:1100px; margin:auto; }
-h3 { color: var(--azul-logo); text-align:center; font-size:2rem; margin-bottom:20px; }
-.box { background: var(--cinza-logo); border-radius:14px; padding:30px; text-align:center; }
-.btn { display:inline-block; margin-top:28px; padding:18px 34px; background: var(--verde-logo); color:#fff; text-decoration:none; font-size:1.05rem; border-radius:10px; font-weight:600; }
-footer { background: var(--azul-logo); color:#fff; text-align:center; padding:32px 20px; font-size:0.95rem; }
-footer a { color:#cceeff; text-decoration:none; font-weight:500; }
-
-/* ===== HERO ===== */
-.hero { position: relative; color:#fff; text-align:center; padding:100px 20px; overflow:hidden; }
-.hero::before { content:""; position:absolute; inset:0; background: rgba(11,46,60,0.5); z-index:1; }
-.hero-content { position: relative; z-index:2; }
-.hero h1 { font-size:2.6rem; font-weight:700; margin-bottom:12px; }
-.hero h2 { font-size:1.3rem; font-weight:500; margin-bottom:20px; }
-.hero .info { font-size:1rem; margin:6px 0; opacity:0.95; }
-
-/* ===== SLIDER HERO ===== */
-.slides { position:absolute; inset:0; z-index:0; }
-.slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1s ease; }
-.slide.active { opacity:1; }
-.arrow { position:absolute; top:50%; transform:translateY(-50%); font-size:2.5rem; color: var(--branco-logo); cursor:pointer; z-index:3; padding:10px; }
-.arrow.left { left:20px; } 
-.arrow.right { right:20px; }
-.dots { position:absolute; bottom:20px; width:100%; text-align:center; z-index:3; }
-.dot { display:inline-block; width:12px; height:12px; border-radius:50%; background: var(--branco-logo); opacity:0.5; margin:0 4px; cursor:pointer; }
-.dot.active { opacity:1; }
-@media (max-width: 768px){
-  .arrow{
-    font-size: 1.2rem;
-    padding: 4px 6px;
-  }
-
-  .arrow.left { left: 8px; }
-  .arrow.right { right: 8px; }
-
-  .dot{
-    width: 7px;
-    height: 7px;
-  }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
-/* ===== GALERIA SLIDER ===== */
-.gallery-slider { position: relative; max-width:100%; margin:30px auto 0; overflow:hidden; }
-.gallery-slide { display:none; text-align:center; }
-.gallery-slide.active { display:block; }
-.gallery-slide img { width:90%; max-width:600px; border-radius:12px; border:3px solid var(--azul-logo); transition: transform 0.3s; cursor:pointer; }
-.gallery-slide img:hover { transform:scale(1.05); border-color: var(--verde-logo); }
-.gallery-slider .arrow { top:50%; transform:translateY(-50%); position:absolute; font-size:2rem; color: var(--branco-logo); cursor:pointer; padding:10px; z-index:2; }
-.gallery-slider .arrow.left { left:10px; }
-.gallery-slider .arrow.right { right:10px; }
-.dots-gallery { text-align:center; margin-top:12px; }
-.dots-gallery .dot { display:inline-block; width:10px; height:10px; border-radius:50%; background: var(--azul-logo); opacity:0.5; margin:0 4px; cursor:pointer; }
-.dots-gallery .dot.active { opacity:1; }
 
-/* ===== PATROCINADORES SLIDER ===== */
-.sponsors-slider { position:relative; max-width:100%; margin:30px auto; overflow:hidden; text-align:center; }
-.sponsor-slide { display:none; }
-.sponsor-slide.active { display:block; }
-.sponsor-slide img { width:140px; height:auto; border-radius:8px; border:2px solid var(--azul-logo); opacity:0.85; transition:all 1.5s ease; }
-.sponsor-slide img:hover { opacity:1; border-color: var(--verde-logo); }
-.dots-sponsor { text-align:center; margin-top:12px; }
-.dots-sponsor .dot { display:inline-block; width:10px; height:10px; border-radius:50%; background: var(--azul-logo); opacity:0.5; margin:0 4px; cursor:pointer; }
-.dots-sponsor .dot.active { opacity:1; }
-
-/* ===== RESPONSIVO ===== */
-@media (max-width:768px){
-  .hero { padding:70px 15px; }
-  .hero h1 { font-size:2rem; }
-  .hero h2 { font-size:1.1rem; }
-  .hero .info { font-size:0.9rem; }
-  .btn { padding:14px 28px; font-size:0.95rem; }
-  section { padding:40px 15px; }
-  h3 { font-size:1.6rem; margin-bottom:16px; }
-  .gallery-slide img { width:80%; }
-  .sponsor-slide img { width:120px; }
+body{
+  background:#fff;
+  color:#000;
+  line-height:1.6;
 }
-@media (max-width:480px){
-  .hero { padding:50px 10px; }
-  .hero h1 { font-size:1.6rem; }
-  .hero h2 { font-size:1rem; }
-  .hero .info { font-size:0.8rem; }
-  .btn { padding:12px 20px; font-size:0.9rem; }
-  h3 { font-size:1.3rem; margin-bottom:14px; }
-  .gallery-slide img { width:90%; }
-  .sponsor-slide img { width:100px; }
-}/* ===== LIGHTBOX FIX ===== */
-.lightbox{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+
+section{
+  padding:60px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+h3{
+  text-align:center;
+  color:var(--azul);
+  margin-bottom:25px;
+  font-size:2rem;
+}
+
+.box{
+  background:var(--cinza);
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:16px 32px;
+  background:var(--verde);
+  color:#fff;
+  text-decoration:none;
+  border-radius:12px;
+  font-weight:600;
+  transition:.35s;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+}
+
+.hero{
+  position:relative;
+  color:#fff;
+  text-align:center;
+  padding:120px 20px;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:1;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.slides{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+.slide.active{
+  opacity:1;
+}
+
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:2rem;
+  color:#fff;
+  cursor:pointer;
+  z-index:3;
+  padding:10px;
+}
+
+.arrow.left{ left:15px; }
+.arrow.right{ right:15px; }
+
+.dots{
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+  z-index:3;
+}
+
+.dot{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#fff;
+  opacity:.5;
+  margin:0 4px;
+  cursor:pointer;
+}
+
+.dot.active{
+  opacity:1;
+}
+
+.hero h1{
+  font-size:2.8rem;
+}
+
+.hero h2{
+  margin:15px 0;
+  font-size:1.2rem;
+}
+
+.info{
+  margin:6px 0;
+}
+
+.stats-grid,
+.winners-grid,
+.sponsors-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:24px;
+  margin-top:30px;
+}
+
+.stat-card,
+.winner-card{
+  padding:28px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition:.35s;
+}
+
+.stat-card{
+  background:linear-gradient(135deg,var(--azul),var(--verde));
+  color:#fff;
+}
+
+.winner-card{
+  background:var(--cinza);
+}
+
+.featured{
+  background:linear-gradient(135deg,var(--azul),var(--verde));
+  color:#fff;
+}
+
+.stat-card:hover,
+.winner-card:hover{
+  transform:translateY(-8px);
+}
+
+.stat-card span{
+  display:block;
+  font-size:2.5rem;
+  font-weight:700;
+}
+
+.medal{
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.gallery img{
+  width:100%;
+  border-radius:14px;
+  aspect-ratio:4/3;
+  object-fit:cover;
+}
+
+.sponsors-grid img{
+  width:100%;
+  max-width:140px;
+  margin:auto;
+  background:#fff;
+  padding:12px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  transition:.35s;
+}
+
+.sponsors-grid img:hover{
+  transform:scale(1.05);
+}
+
+footer{
+  background:var(--azul);
+  color:#fff;
+  text-align:center;
+  padding:35px 20px;
+}
+
+.instagram-link{
+  display:inline-flex;
+  margin-top:12px;
+  transition:.35s;
+}
+
+.instagram-link:hover{
+  transform:translateY(-4px) scale(1.08);
+}
+
+.instagram-link:hover svg{
+  filter:drop-shadow(0 0 10px rgba(255,255,255,.35));
+}
+
+.whatsapp-float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  right:25px;
+  bottom:25px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  z-index:999;
+  transition:all .35s ease;
+  animation:pulseWhatsapp 2.8s infinite;
+}
+
+.whatsapp-float:hover{
+  transform:translateY(-6px) scale(1.08);
+  box-shadow:0 14px 30px rgba(37,211,102,.45);
+  animation:none;
+}
+
+.whatsapp-float:hover svg{
+  filter:drop-shadow(0 0 8px rgba(255,255,255,.55));
+}
+
+@keyframes pulseWhatsapp{
+  0%{ box-shadow:0 0 0 0 rgba(37,211,102,.35); }
+  70%{ box-shadow:0 0 0 16px rgba(37,211,102,0); }
+  100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:2rem;}
+  h3{font-size:1.5rem;}
+}.winner-banner{
+  grid-column: 1 / -1;
+  position: relative;
+  height: 260px;
+  border-radius: 18px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
 }
 
-.lightbox img{
-  max-width: 90%;
-  max-height: 90%;
+.banner-bg{
+  position: absolute;
+  inset: 0;
+  background: url('https://imgur.com/BKOXwvj.jpg') center/cover no-repeat;
+  transform: scale(1.08);
+}
+
+.winner-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.2));
+}
+
+.banner-content{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.winner-banner .medal{
+  font-size: 3rem;
+}
+.sponsors-arena{
+  overflow:hidden;
+  background:linear-gradient(90deg,#0b0b0b,#1a1a1a,#0b0b0b);
+  border-radius:18px;
+  padding:25px 0;
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.sponsor-track{
+  display:flex;
+  align-items:center;
+  gap:35px;
+  width:max-content;
+  animation:arenaScroll 20s linear infinite;
+}
+
+.sponsor-track img{
+  width:140px;
+  background:#fff;
+  padding:12px;
+  border-radius:12px;
+  opacity:.55;
+  transform:scale(.9);
+  transition:.3s;
+}
+
+/* ⭐ DESTAQUE AUTOMÁTICO */
+.sponsor-track img:nth-child(3n){
+  opacity:1;
+  transform:scale(1.15);
+  box-shadow:0 0 18px rgba(37,211,102,.35);
+}
+
+.sponsor-track img:hover{
+  transform:scale(1.25);
+  opacity:1;
+}
+
+@keyframes arenaScroll{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+
+@media(max-width:768px){
+  .sponsor-track img{
+    width:100px;
+  }
+}
+  .team-photo{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
   border-radius: 12px;
+  margin: 10px 0;
+}
+  #lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:20px;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  transform:scale(0.9);
+  animation:zoom .2s ease forwards;
+}
+
+@keyframes zoom{
+  to{ transform:scale(1); }
 }
 </style>
 </head>
-
 <body>
-
-<!-- ===== SLIDER HERO ===== -->
+  <!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
 <div class="hero">
+
   <div class="slides">
-    <div class="slide active"data-bg="https://i.imgur.com/0V0olPd.jpeg"></div>
-    <div class="slide" data-bg="https://i.imgur.com/H1aLeeQ.jpg"></div>
-    <div class="slide" data-bg="https://i.imgur.com/1eTierW.jpg"></div>
+    <div class="slide active" data-bg="https://i.imgur.com/KMQuepu.jpg"></div>
+    <div class="slide" data-bg="https://imgur.com/fIR1ILi.jpg"></div>
+    <div class="slide" data-bg="https://i.imgur.com/eAsyQbi.jpg"></div>
   </div>
+
   <div class="arrow left" onclick="prevSlide()">❮</div>
   <div class="arrow right" onclick="nextSlide()">❯</div>
+
   <div class="dots"></div>
+
   <div class="hero-content">
-   <h1>🎣 Torneio de Pesca em Niquelândia – Pescando com Jesus</h1>
-    <h2>O maior torneio de pesca esportiva cristão de Niquelândia</h2>
-    <div class="info">📍 Lago Serra da Mesa • Condomínio Pouso Alegre</div>
-    <div class="info">📅 18 de abril de 2026</div>
-    <a class="btn" href="https://chat.whatsapp.com/G55juPXIamEFQ33lXJRFZz" target="_blank">👉Saiba mais </a>
+    <h1>🎣 Pescando com Jesus 2026</h1>
+    <h2>Uma edição marcada por fé, união e grandes histórias</h2>
+    <div class="info">📍 Lago Serra da Mesa • Niquelândia - GO</div>
+    <div class="info">✅ Evento realizado com sucesso</div>
+    <a class="btn" href="https://wa.me/5562996347180" target="_blank">
+      🤝 QUERO APOIAR A PRÓXIMA EDIÇÃO
+    </a>
   </div>
+
 </div>
 
-<!-- SOBRE -->
 <section>
   <div class="box">
-    <h3>Sobre o Evento</h3>
+    <h3>Sobre a edição 2026</h3>
     <p>
-      Assembléia de Deus Ministério de Anápolis em Niquelândia, Situada na Av. São José do Tocantins, St. Bela Vista, em Nome do Pastor Presidente ISAÍAS MARQUÊS, Apresenta <strong>Pescando com Jesus</strong> O maior torneio de pesca esportiva em Niquelândia, realizado no Lago Serra da Mesa um evento cristão que une fé, família, esporte e conscientização ambiental. Unindo pessoas e propósitos, o evento chega à sua <strong>4ª edição</strong>, promovendo integração, comunhão e respeito à natureza em um ambiente organizado e familiar.
+      A 4ª edição do <strong>Pescando com Jesus</strong> reuniu
+      <strong>38 equipes participantes</strong> em um grande encontro
+      de fé, comunhão, pesca esportiva e preservação ambiental.
     </p>
   </div>
 </section>
 
-<!-- GALERIA SLIDER -->
 <section>
-  <h3>Momentos do Evento</h3>
-  <div class="gallery-slider">
-    <div class="gallery-slide active"><img src="https://i.imgur.com/yMAMtja.jpg" loading="lazy"></div>
-    <div class="gallery-slide"><img src="https://i.imgur.com/6uOhU6Z.jpg" loading="lazy"></div>
-    <div class="gallery-slide"><img src="https://i.imgur.com/70JRIoe.jpg" loading="lazy"></div>
-    <div class="gallery-slide"><img src="https://i.imgur.com/cfz3rVR.jpg" loading="lazy"></div>
-    <div class="gallery-slide"><img src="https://i.imgur.com/z8Kd0Dj.jpg" loading="lazy"></div>
-    <div class="gallery-slide"><img src="https://i.imgur.com/GMVwuJd.jpg" loading="lazy"></div>
-    <div class="gallery-slide"><img src="https://i.imgur.com/gzp7NkQ.jpg" loading="lazy"></div>
-    <div class="gallery-slide"><img src="https://i.imgur.com/eOWJzpC.jpg" loading="lazy"></div>
-    <div class="gallery-slide"><img src="https://i.imgur.com/fiuH54w.jpg" loading="lazy"></div>
-    <div class="arrow left" onclick="prevGallerySlide()">❮</div>
-    <div class="arrow right" onclick="nextGallerySlide()">❯</div>
-    <div class="dots-gallery"></div>
+  <h3>📊 Números da edição</h3>
+  <div class="stats-grid">
+    <div class="stat-card"><span class="counter" data-target="38">0</span><p>Equipes</p></div>
+    <div class="stat-card"><span class="counter" data-target="150">0</span><p>Pessoas presentes</p></div>
+    <div class="stat-card"><span class="counter" data-target="30">0</span><p>Apoiadores</p></div>
+    <div class="stat-card"><span class="counter" data-target="4">0</span><p>Edições</p></div>
   </div>
 </section>
 
-<!-- PARTICIPAÇÃO -->
 <section>
-  <div class="box">
-    <h3>Participação</h3>
-    <p>
-      Torneio realizado no sistema <strong>pesque e solte</strong>, com estrutura organizada, ambiente familiar e respeito às normas ambientais. Todas as informações oficiais serão divulgadas exclusivamente no grupo do evento.
-    </p>
-    <a class="btn" href="https://wa.me/5562985334467?text=Olá!%20Quero%20Participar%20do%20Maior%20torneio%20de%20Pesca!%20Pescando%20com%20Jesus." target="_blank">📲 FAÇA SUA INSCRIÇÃO!</a>
+  <h3>📸 Galeria</h3>
+  <div class="gallery">
+    <img src="https://i.imgur.com/cD76sW1.jpg" loading="lazy" alt="">
+    <img src="https://i.imgur.com/NpknKlx.jpg" loading="lazy" alt="">
+    <img src="https://imgur.com/qWjZdyq.jpg" loading="lazy" alt="">
+    <img src="https://i.imgur.com/eSByblM.jpg" loading="lazy" alt="">
   </div>
 </section>
 
-<!-- PREMIAÇÃO -->
 <section>
-  <div class="premiacao box">
-    <h3 style="color:#4EC4CB;">🏆 Premiação</h3>
-    <p>🥇 1º • 🥈 2º • 🥉 3º lugar — conforme regulamento</p>
-    <div style="text-align:center; margin:20px 0;">
-      <img src="https://i.imgur.com/jj0KRuz.png" alt="Canoa semi-chata" style="max-width:80%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
-      <p style="font-size:0.9rem; margin-top:6px;">Imagem ilustrativa para fins de divulgação</p>
+  <h3>🏆 Resultado Oficial</h3>
+  <div class="winners-grid">
+ <div class="winner-card">
+  <div class="medal">🥇</div>
+  <img class="team-photo" src="https://i.imgur.com/D2ZjwNG.jpg" alt="Equipe Rancho LM">
+  <h4>1º Lugar</h4>
+  <p>Equipe Rancho LM</p>
+</div>
+
+<div class="winner-card">
+  <div class="medal">🥈</div>
+  <img class="team-photo" src="https://i.imgur.com/H1NAiLf.jpg" alt="Equipe Barco da Fé">
+  <h4>2º Lugar</h4>
+  <p>Equipe Barco da Fé</p>
+</div>
+
+<div class="winner-card">
+  <div class="medal">🥉</div>
+  <img class="team-photo" src="https://i.imgur.com/GFMTrY0.jpg" alt="Equipe Alan Car">
+  <h4>3º Lugar</h4>
+  <p>Equipe Alan Car Emprendimentos</p>
+</div>
+<div class="winner-card">
+  <div class="medal">🐟</div>
+  <img class="team-photo" src="https://i.imgur.com/8M4fiMu.jpg" alt="Pro Cast Brazil">
+  <h4>Maior Peixe</h4>
+  <p>Pro Cast Brazil</p>
+</div>
+   <div class="winner-banner">
+  <div class="banner-bg"></div>
+
+  <div class="banner-content">
+    <div class="medal">🚤</div>
+    <div>
+      <h4>SORTEIO ESPECIAL</h4>
+      <p><strong>Equipe Tribo 7 MD Placa</strong></p>
+      <small>Canoa + carreta</small>
     </div>
-    <p style="text-align:center; max-width:800px; margin:auto; font-size:1.05rem;">🚤 <strong>Canoa semi-chata de 5 metros + carretinha (reboque)</strong><br><br>Todos os participantes concorrem igualmente ao sorteio, reforçando os valores cristãos de comunhão, igualdade e participação.</p>
-    🎁 <strong>PREMIAÇÃO PRINCIPAL (SORTEIO ENTRE AS EQUIPES)</strong><br><br>
   </div>
+</div>
 </section>
 
-<!-- PATROCINADOR -->
+<section>
+  <h3>🤝 Patrocinadores 2026</h3>
+  <div class="sponsors-arena">
+
+  <div class="sponsor-track">
+
+    <img src="https://i.imgur.com/M5sJ8kN.png" alt="">
+    <img src="https://i.imgur.com/zHuPpeM.png" alt="">
+    <img src="https://i.imgur.com/hBuN02f.png" alt="">
+    <img src="https://i.imgur.com/Be3rlLA.png" alt="">
+    <img src="https://i.imgur.com/UsuxU5q.png" alt="">
+    <img src="https://i.imgur.com/GewEC2t.png" alt="">
+
+    <!-- REPETE (IMPORTANTE pro loop suave) -->
+    <img src="https://i.imgur.com/M5sJ8kN.png" alt="">
+    <img src="https://i.imgur.com/zHuPpeM.png" alt="">
+    <img src="https://i.imgur.com/hBuN02f.png" alt="">
+    <img src="https://i.imgur.com/Be3rlLA.png" alt="">
+    <img src="https://i.imgur.com/UsuxU5q.png" alt="">
+    <img src="https://i.imgur.com/GewEC2t.png" alt="">
+
+  </div>
+
+</div>
+</section>
+
 <section>
   <div class="box">
-    <h3>Seja um Patrocinador</h3>
-    <p>
-      Apoie um evento que une <strong>fé, esporte e família</strong>, com grande visibilidade regional e forte engajamento comunitário. Associe sua marca a valores positivos e a um evento consolidado.
-    </p>
-    <a class="btn" href="https://wa.me/5562996347180?text=Olá!%20Tenho%20interesse%20em%20ser%20patrocinador%20do%20evento%20Pescando%20com%20Jesus 2026." target="_blank">🤝 QUERO SER PATROCINADOR</a>
+    <h3>Próxima edição</h3>
+    <p>Se você deseja apoiar a próxima edição, entre em contato conosco.</p>
+    <a class="btn" href="https://wa.me/5562996347180" target="_blank">🤝 QUERO APOIAR</a>
   </div>
 </section>
 
-<!-- PATROCINADORES SLIDER -->
-<section>
-  <h3>APOIADORES</h3>
-  <div class="sponsors-slider">
-    <div class="sponsor-slide active"><img src="https://imgur.com/M5sJ8kN.png" loading="lazy" alt="Patrocinador+1"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/zHuPpeM.png" loading="lazy" alt="Patrocinador+2"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/hBuN02f.png" loading="lazy" alt="Patrocinador+3"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/hBuN02f.png" loading="lazy" alt="Patrocinador+4"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/Be3rlLA.png" loading="lazy" alt="Patrocinador+5"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/UsuxU5q.png" loading="lazy" alt="Patrocinador+6"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/GewEC2t.png" loading="lazy" alt="Patrocinador+7"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/ruwrzx3.png" loading="lazy" alt="Patrocinador+8"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/yFUfcGs.png" loading="lazy" alt="Patrocinador+9"></div>
-    <div class="sponsor-slide"><img src="https://imgur.com/lYOX9SD.png" loading="lazy" alt="Patrocinador+10"></div>
-    <div class="arrow left" onclick="prevSponsorSlide()">❮</div>
-    <div class="arrow right" onclick="nextSponsorSlide()">❯</div>
-    <div class="dots-sponsor"></div>
-  </div>
-</section>
-
-<!-- RODAPÉ -->
 <footer>
-  <p>📍 Lago Serra da Mesa – Niquelândia - Goiás- Brasil</p>
-  <p>✉️ <a href="mailto:inscricao@pescandocomjesus.com.br">inscricao@pescandocomjesus.com.br</a></p>
-  <p>📸 Instagram: <a href="https://instagram.com/pescandocomjesus.oficial" target="_blank">@pescandocomjesus.oficial</a></p>
-  <p style="margin-top:10px;">© 2026 • Realização: HOMENS DE HONRA - Assembleia de Deus – Ministério de Anápolis</p>
+  <p>📍 Lago Serra da Mesa – Niquelândia - GO</p>
+  <p>Siga nosso Instagram oficial</p>
+
+  
+  <a class="instagram-link"
+   href="https://instagram.com/pescandocomjesus.oficial"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Instagram">
+  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
+    <defs>
+      <linearGradient id="instagramGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#feda75"/>
+        <stop offset="25%" stop-color="#fa7e1e"/>
+        <stop offset="50%" stop-color="#d62976"/>
+        <stop offset="75%" stop-color="#962fbf"/>
+        <stop offset="100%" stop-color="#4f5bd5"/>
+      </linearGradient>
+    </defs>
+
+    <path fill="url(#instagramGradient)"
+      d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm4.25 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.5-10.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/>
+  </svg>
+</a>
+
+  <p style="margin-top:15px;">© 2026 • Pescando com Jesus</p>
 </footer>
 
-<!-- LIGHTBOX -->
-<div class="lightbox"><img></div>
+<a class="whatsapp-float" href="https://wa.me/5562985334467" target="_blank" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
+    <path d="M20.52 3.48A11.82 11.82 0 0 0 12.06 0C5.48 0 .12 5.36.12 11.94c0 2.1.55 4.16 1.6 5.97L0 24l6.27-1.64a11.9 11.9 0 0 0 5.79 1.48h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.18-3.49-8.42zm-8.46 18.3h-.01a9.93 9.93 0 0 1-5.06-1.38l-.36-.21-3.72.97 1-3.63-.24-.37a9.89 9.89 0 0 1-1.52-5.23c0-5.48 4.46-9.94 9.94-9.94a9.87 9.87 0 0 1 7.03 2.91 9.86 9.86 0 0 1 2.9 7.03c0 5.48-4.46 9.94-9.96 9.94zm5.45-7.45c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.93 1.17-.17.2-.34.22-.64.07-.3-.15-1.24-.46-2.36-1.46-.87-.77-1.46-1.72-1.63-2.02-.17-.3-.02-.46.13-.61.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.91-2.19-.24-.58-.48-.5-.66-.51h-.56c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.52 0 1.48 1.08 2.92 1.23 3.12.15.2 2.12 3.23 5.13 4.53.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.69.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+  </svg>
+</a>
 
 <script>
-// ===== SLIDER HERO =====
+document.querySelectorAll('.counter').forEach(counter=>{
+  const target = +counter.dataset.target;
+  let count = 0;
+  const step = Math.ceil(target / 60);
+
+  function update(){
+    count += step;
+    if(count < target){
+      counter.textContent = count;
+      requestAnimationFrame(update);
+    }else{
+      counter.textContent = target;
+    }
+  }
+
+  update();
+});
+</script>
+<script>
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.querySelector('.dots');
-let index = 0;
-  window.addEventListener('load', () => {
-  slides[0].style.backgroundImage = `url('${slides[0].dataset.bg}')`;
+let current = 0;
+
+// inicia primeira imagem corretamente
+window.addEventListener('load', () => {
+  slides.forEach((s) => {
+    s.style.backgroundImage = `url('${s.dataset.bg}')`;
+  });
 });
+
+// criar bolinhas
 slides.forEach((_, i) => {
-  const d = document.createElement('span');
-  d.className = 'dot' + (i===0?' active':'');
-  d.onclick = ()=>showSlide(i);
-  dotsContainer.appendChild(d);
+  const dot = document.createElement('span');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goToSlide(i);
+  dotsContainer.appendChild(dot);
 });
-function showSlide(i){
-  slides[index].classList.remove('active');
-  dotsContainer.children[index].classList.remove('active');
 
-  index = i;
+function goToSlide(i) {
+  slides[current].classList.remove('active');
+  dotsContainer.children[current].classList.remove('active');
 
-  // carrega imagem apenas quando for usada
-  if (!slides[index].style.backgroundImage) {
-    slides[index].style.backgroundImage = `url('${slides[index].dataset.bg}')`;
-  }
+  current = i;
 
-  slides[index].classList.add('active');
-  dotsContainer.children[index].classList.add('active');
+  slides[current].classList.add('active');
+  dotsContainer.children[current].classList.add('active');
 }
-function nextSlide(){ showSlide((index+1)%slides.length); }
-function prevSlide(){ showSlide((index-1+slides.length)%slides.length); }
-setInterval(nextSlide,6000);
 
-// ===== SLIDER GALERIA =====
-const gallerySlides = document.querySelectorAll('.gallery-slide');
-const galleryDotsContainer = document.querySelector('.dots-gallery');
-let galleryIndex = 0;
-gallerySlides.forEach((_, i)=>{
-  const d = document.createElement('span');
-  d.className = 'dot' + (i===0?' active':'');
-  d.onclick = ()=>showGallerySlide(i);
-  galleryDotsContainer.appendChild(d);
-});
-function showGallerySlide(i){
-  gallerySlides[galleryIndex].classList.remove('active');
-  galleryDotsContainer.children[galleryIndex].classList.remove('active');
-  galleryIndex = i;
-  gallerySlides[galleryIndex].classList.add('active');
-  galleryDotsContainer.children[galleryIndex].classList.add('active');
+function nextSlide() {
+  goToSlide((current + 1) % slides.length);
 }
-function nextGallerySlide(){ showGallerySlide((galleryIndex+1)%gallerySlides.length); }
-function prevGallerySlide(){ showGallerySlide((galleryIndex-1+gallerySlides.length)%gallerySlides.length); }
-setInterval(nextGallerySlide,5000);
 
-// ===== SLIDER PATROCINADORES =====
-const sponsorSlides = document.querySelectorAll('.sponsor-slide');
-const sponsorDotsContainer = document.querySelector('.dots-sponsor');
-let sponsorIndex = 0;
-sponsorSlides.forEach((_, i)=>{
-  const d = document.createElement('span');
-  d.className = 'dot' + (i===0?' active':'');
-  d.onclick = ()=>showSponsorSlide(i);
-  sponsorDotsContainer.appendChild(d);
-});
-function showSponsorSlide(i){
-  sponsorSlides[sponsorIndex].classList.remove('active');
-  sponsorDotsContainer.children[sponsorIndex].classList.remove('active');
-  sponsorIndex = i;
-  sponsorSlides[sponsorIndex].classList.add('active');
-  sponsorDotsContainer.children[sponsorIndex].classList.add('active');
+function prevSlide() {
+  goToSlide((current - 1 + slides.length) % slides.length);
 }
-function nextSponsorSlide(){ showSponsorSlide((sponsorIndex+1)%sponsorSlides.length); }
-function prevSponsorSlide(){ showSponsorSlide((sponsorIndex-1+sponsorSlides.length)%sponsorSlides.length); }
-setInterval(nextSponsorSlide,4000);
 
-// ===== LIGHTBOX =====
-const lightbox = document.querySelector('.lightbox');
-const lbImg = lightbox.querySelector('img');
-document.querySelectorAll('.gallery-slide img').forEach(img=>{
-  img.onclick = ()=>{
+setInterval(nextSlide, 5000);document.querySelectorAll('.gallery img').forEach(img=>{
+  img.addEventListener('click', ()=>{
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    lightboxImg.src = img.src;
     lightbox.style.display = 'flex';
-    lbImg.src = img.src;
-    document.body.style.overflow = 'hidden'; // trava o scroll
-  }
+  });
 });
 
-lightbox.onclick = ()=>{
-  lightbox.style.display = 'none';
-  document.body.style.overflow = 'auto'; // libera o scroll
-};
+function closeLightbox(){
+  document.getElementById('lightbox').style.display = 'none';
+}
+  
 </script>
-
 </body>
 </html>
