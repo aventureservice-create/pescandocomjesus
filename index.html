@@ -678,23 +678,33 @@ src="https://i.imgur.com/JNWehP1.png" alt="">
 </a>
 
 <script>
-document.querySelectorAll('.counter').forEach(counter=>{
-  const target = +counter.dataset.target;
-  let count = 0;
-  const step = Math.ceil(target / 60);
+const counters = document.querySelectorAll('.counter');
 
-  function update(){
-    count += step;
-    if(count < target){
-      counter.textContent = count;
-      requestAnimationFrame(update);
-    }else{
-      counter.textContent = target;
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const counter = entry.target;
+      const target = +counter.dataset.target;
+      let count = 0;
+      const step = Math.ceil(target / 80);
+
+      function update(){
+        count += step;
+        if(count < target){
+          counter.textContent = count;
+          requestAnimationFrame(update);
+        }else{
+          counter.textContent = target;
+        }
+      }
+
+      update();
+      observer.unobserve(counter);
     }
-  }
+  });
+},{threshold:0.5});
 
-  update();
-});
+counters.forEach(counter=>observer.observe(counter));
 </script>
 <script>
 const slides = document.querySelectorAll('.slide');
