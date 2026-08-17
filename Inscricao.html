@@ -9,12 +9,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
   <style>
+
     :root {
       --azul: #4EC4CB;
       --verde: #25D366;
@@ -157,6 +159,7 @@
     }
 
     @keyframes aparecer {
+
       from {
         opacity: 0;
         transform: translateY(8px);
@@ -166,6 +169,7 @@
         opacity: 1;
         transform: translateY(0);
       }
+
     }
 
     .titulo-etapa {
@@ -442,52 +446,74 @@
 
     /* REGULAMENTO */
 
-    .confirmacao-regulamento {
+    .regulamento {
       margin-top: 20px;
-      padding: 15px;
-      background: #f8f8f8;
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
+      border: 1px solid #e2e2e2;
+      border-radius: 12px;
+      padding: 18px;
+      background: #fafafa;
     }
 
-    .confirmacao-regulamento.erro {
-      border-color: var(--erro);
-      background: rgba(220, 53, 69, 0.04);
+    .regulamento-titulo {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
-    .checkbox-regulamento {
+    .btn-regulamento {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 9px;
+      background: var(--azul);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn-regulamento:hover {
+      background: #3bb4bc;
+      transform: translateY(-1px);
+    }
+
+    .aceite-regulamento {
       display: flex;
       align-items: flex-start;
       gap: 10px;
+      margin-top: 16px;
       cursor: pointer;
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.5;
+      color: #444;
     }
 
-    .checkbox-regulamento input {
-      width: 20px;
-      height: 20px;
-      min-width: 20px;
+    .aceite-regulamento input {
+      width: 19px;
+      height: 19px;
+      min-width: 19px;
       margin-top: 2px;
-      cursor: pointer;
       accent-color: var(--azul);
-    }
-
-    .checkbox-regulamento a {
-      color: #199da5;
-      font-weight: 700;
-      text-decoration: underline;
+      cursor: pointer;
     }
 
     .erro-regulamento {
       display: none;
+      margin-top: 8px;
       color: var(--erro);
       font-size: 12px;
-      margin-top: 8px;
-      margin-left: 30px;
+      font-weight: 600;
     }
 
-    .confirmacao-regulamento.erro .erro-regulamento {
+    .regulamento.erro {
+      border-color: var(--erro);
+      background: #fff7f7;
+    }
+
+    .regulamento.erro .erro-regulamento {
       display: block;
     }
 
@@ -612,8 +638,15 @@
       .nome-equipe-confirmacao {
         font-size: 18px;
       }
+
+      .btn-regulamento {
+        width: 100%;
+      }
+
     }
+
   </style>
+
 </head>
 
 <body>
@@ -718,7 +751,7 @@
             <input
               type="text"
               id="nomeEquipe"
-              placeholder="Ex.: Rancho LM"
+              placeholder="Ex.: Nome Da sua Turma de Pesca"
               autocomplete="organization"
             >
 
@@ -994,35 +1027,46 @@
           <div id="resumoInscricao"></div>
 
 
-          <!-- CONFIRMAÇÃO DO REGULAMENTO -->
+          <!-- ================================================= -->
+          <!-- REGULAMENTO -->
+          <!-- ================================================= -->
 
-          <div
-            class="confirmacao-regulamento"
-            id="confirmacaoRegulamento"
-          >
+          <div class="regulamento" id="blocoRegulamento">
 
-            <label class="checkbox-regulamento">
+            <div class="regulamento-titulo">
+              📄 Regulamento do campeonato
+            </div>
+
+            <a
+              class="btn-regulamento"
+              href="https://drive.google.com/file/d/1teTbsz0PcbvoBfcdqSOOLsiivkapk_AS/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LER REGULAMENTO
+            </a>
+
+
+            <label class="aceite-regulamento">
 
               <input
                 type="checkbox"
-                id="liRegulamento"
+                id="aceiteRegulamento"
+                onchange="limparErroRegulamento()"
               >
 
               <span>
-                Li e concordo com o
-                <a
-                  href="https://pescandocomjesus.com.br/Regulamento.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Regulamento do Pescando com Jesus
-                </a>.
+                Li e estou de acordo com o Regulamento do campeonato.
               </span>
 
             </label>
 
-            <div class="erro-regulamento">
-              É necessário confirmar que você leu e concorda com o regulamento.
+
+            <div
+              class="erro-regulamento"
+              id="erroRegulamento"
+            >
+              Você precisa ler e aceitar o regulamento para confirmar a inscrição.
             </div>
 
           </div>
@@ -1175,6 +1219,7 @@
       etapaAtual = numero;
 
       atualizarIndicadores();
+
     }
 
 
@@ -2193,35 +2238,73 @@
 
 
     /* =======================================================
-       CONFIRMAÇÃO
+       REGULAMENTO
     ======================================================= */
 
-    function confirmarInscricao() {
+    function limparErroRegulamento() {
 
       const checkbox =
         document.getElementById(
-          "liRegulamento"
+          "aceiteRegulamento"
         );
 
 
-      const confirmacao =
+      const bloco =
         document.getElementById(
-          "confirmacaoRegulamento"
+          "blocoRegulamento"
+        );
+
+
+      if (checkbox.checked) {
+
+        bloco.classList.remove("erro");
+
+      }
+
+    }
+
+
+    function validarRegulamento() {
+
+      const checkbox =
+        document.getElementById(
+          "aceiteRegulamento"
+        );
+
+
+      const bloco =
+        document.getElementById(
+          "blocoRegulamento"
         );
 
 
       if (!checkbox.checked) {
 
-        confirmacao.classList.add("erro");
+        bloco.classList.add("erro");
 
-        checkbox.focus();
-
-        return;
+        return false;
 
       }
 
 
-      confirmacao.classList.remove("erro");
+      bloco.classList.remove("erro");
+
+      return true;
+
+    }
+
+
+    /* =======================================================
+       CONFIRMAÇÃO
+    ======================================================= */
+
+    function confirmarInscricao() {
+
+      if (!validarRegulamento()) {
+
+        return;
+
+      }
 
 
       document
@@ -2294,23 +2377,23 @@
 
       document
         .getElementById(
-          "nomeEquipeConfirmacao"
-        )
-        .textContent = "";
-
-
-      document
-        .getElementById(
-          "liRegulamento"
+          "aceiteRegulamento"
         )
         .checked = false;
 
 
       document
         .getElementById(
-          "confirmacaoRegulamento"
+          "blocoRegulamento"
         )
         .classList.remove("erro");
+
+
+      document
+        .getElementById(
+          "nomeEquipeConfirmacao"
+        )
+        .textContent = "";
 
 
       limparErros();
