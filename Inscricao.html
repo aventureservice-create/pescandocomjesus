@@ -440,6 +440,57 @@
       border-bottom: none;
     }
 
+    /* REGULAMENTO */
+
+    .confirmacao-regulamento {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f8f8f8;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+    }
+
+    .confirmacao-regulamento.erro {
+      border-color: var(--erro);
+      background: rgba(220, 53, 69, 0.04);
+    }
+
+    .checkbox-regulamento {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .checkbox-regulamento input {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--azul);
+    }
+
+    .checkbox-regulamento a {
+      color: #199da5;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .erro-regulamento {
+      display: none;
+      color: var(--erro);
+      font-size: 12px;
+      margin-top: 8px;
+      margin-left: 30px;
+    }
+
+    .confirmacao-regulamento.erro .erro-regulamento {
+      display: block;
+    }
+
     /* SUCESSO */
 
     .sucesso {
@@ -941,6 +992,40 @@
 
 
           <div id="resumoInscricao"></div>
+
+
+          <!-- CONFIRMAÇÃO DO REGULAMENTO -->
+
+          <div
+            class="confirmacao-regulamento"
+            id="confirmacaoRegulamento"
+          >
+
+            <label class="checkbox-regulamento">
+
+              <input
+                type="checkbox"
+                id="liRegulamento"
+              >
+
+              <span>
+                Li e concordo com o
+                <a
+                  href="https://pescandocomjesus.com.br/Regulamento.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Regulamento do Pescando com Jesus
+                </a>.
+              </span>
+
+            </label>
+
+            <div class="erro-regulamento">
+              É necessário confirmar que você leu e concorda com o regulamento.
+            </div>
+
+          </div>
 
 
           <div class="botoes">
@@ -2113,6 +2198,32 @@
 
     function confirmarInscricao() {
 
+      const checkbox =
+        document.getElementById(
+          "liRegulamento"
+        );
+
+
+      const confirmacao =
+        document.getElementById(
+          "confirmacaoRegulamento"
+        );
+
+
+      if (!checkbox.checked) {
+
+        confirmacao.classList.add("erro");
+
+        checkbox.focus();
+
+        return;
+
+      }
+
+
+      confirmacao.classList.remove("erro");
+
+
       document
         .getElementById(
           "nomeEquipeConfirmacao"
@@ -2186,6 +2297,20 @@
           "nomeEquipeConfirmacao"
         )
         .textContent = "";
+
+
+      document
+        .getElementById(
+          "liRegulamento"
+        )
+        .checked = false;
+
+
+      document
+        .getElementById(
+          "confirmacaoRegulamento"
+        )
+        .classList.remove("erro");
 
 
       limparErros();
