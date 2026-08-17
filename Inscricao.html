@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Inscrição | Pescando com Jesus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --azul: #4EC4CB;
+      --verde: #25D366;
+      --cinza: #f5f5f5;
+      --texto: #222;
+      --branco: #ffffff;
+      --erro: #dc3545;
+      --borda: #dddddd;
+      --sombra: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--cinza);
+      color: var(--texto);
+      min-height: 100vh;
+    }
+
+    .pagina {
+      width: 100%;
+      padding: 30px 16px 50px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* CABEÇALHO */
+
+    .cabecalho {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .cabecalho h1 {
+      color: var(--azul);
+      font-size: clamp(25px, 5vw, 38px);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .cabecalho p {
+      margin-top: 8px;
+      font-size: 15px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* INDICADOR DE ETAPAS */
+
+    .etapas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      gap: 0;
+    }
+
+    .etapa-indicador {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      max-width: 220px;
+    }
+
+    .circulo {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 50%;
+      background: #ddd;
+      color: #777;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .etapa-indicador.ativa .circulo {
+      background: var(--azul);
+      color: white;
+      box-shadow: 0 4px 12px rgba(78, 196, 203, 0.35);
+    }
+
+    .etapa-indicador.concluida .circulo {
+      background: var(--verde);
+      color: white;
+    }
+
+    .nome-etapa {
+      margin-left: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #888;
+      white-space: nowrap;
+    }
+
+    .etapa-indicador.ativa .nome-etapa,
+    .etapa-indicador.concluida .nome-etapa {
+      color: #222;
+    }
+
+    .linha-etapa {
+      height: 3px;
+      flex: 1;
+      background: #ddd;
+      margin: 0 8px;
+      border-radius: 5px;
+    }
+
+    .linha-etapa.concluida {
+      background: var(--verde);
+    }
+
+    /* CARD */
+
+    .card {
+      background: var(--branco);
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: var(--sombra);
+    }
+
+    .etapa-conteudo {
+      display: none;
+    }
+
+    .etapa-conteudo.ativa {
+      display: block;
+      animation: aparecer 0.25s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .titulo-etapa {
+      font-size: 23px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .subtitulo {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    /* SEÇÕES */
+
+    .grupo-titulo {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 25px 0 15px;
+      color: #333;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #eee;
+    }
+
+    .grupo-titulo:first-of-type {
+      margin-top: 0;
+    }
+
+    /* FORMULÁRIOS */
+
+    .campo {
+      margin-bottom: 17px;
+    }
+
+    .campo label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .campo label span {
+      color: var(--erro);
+    }
+
+    .campo input,
+    .campo select {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--borda);
+      border-radius: 10px;
+      padding: 0 14px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--texto);
+      background: white;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .campo input:focus,
+    .campo select:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 0 3px rgba(78, 196, 203, 0.12);
+    }
+
+    .campo.erro input,
+    .campo.erro select {
+      border-color: var(--erro);
+    }
+
+    .mensagem-erro {
+      display: none;
+      color: var(--erro);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .campo.erro .mensagem-erro {
+      display: block;
+    }
+
+    /* GRID */
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 15px;
+    }
+
+    /* AVISO */
+
+    .aviso {
+      background: rgba(78, 196, 203, 0.1);
+      border-left: 4px solid var(--azul);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 20px 0;
+    }
+
+    /* BOTÕES */
+
+    .botoes {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      min-height: 48px;
+      border: none;
+      border-radius: 10px;
+      padding: 0 22px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-principal {
+      background: var(--azul);
+      color: white;
+      margin-left: auto;
+    }
+
+    .btn-principal:hover {
+      background: #3bb4bc;
+    }
+
+    .btn-voltar {
+      background: #eee;
+      color: #444;
+    }
+
+    .btn-voltar:hover {
+      background: #ddd;
+    }
+
+    .btn-verde {
+      background: var(--verde);
+      color: white;
+      margin-left: auto;
+    }
+
+    .btn-verde:hover {
+      background: #1fb957;
+    }
+
+    /* PARTICIPANTES */
+
+    .participante {
+      border: 1px solid #e4e4e4;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 15px;
+      background: #fff;
+    }
+
+    .participante.capitao {
+      border-color: rgba(78, 196, 203, 0.5);
+      background: rgba(78, 196, 203, 0.04);
+    }
+
+    .participante-cabecalho {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .participante-titulo {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--azul);
+      color: white;
+      font-size: 10px;
+      padding: 4px 9px;
+      border-radius: 20px;
+      font-weight: 700;
+      margin-left: 5px;
+    }
+
+    .btn-remover {
+      border: none;
+      background: transparent;
+      color: var(--erro);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-adicionar {
+      width: 100%;
+      min-height: 46px;
+      border: 2px dashed var(--azul);
+      background: rgba(78, 196, 203, 0.05);
+      color: #199da5;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .btn-adicionar:hover {
+      background: rgba(78, 196, 203, 0.12);
+    }
+
+    .limite {
+      text-align: center;
+      color: #777;
+      font-size: 12px;
+      margin-top: 9px;
+    }
+
+    /* REVISÃO */
+
+    .resumo-bloco {
+      border: 1px solid #e6e6e6;
+      border-radius: 12px;
+      padding: 17px;
+      margin-bottom: 15px;
+    }
+
+    .resumo-titulo {
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .resumo-principal {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .resumo-linha {
+      margin-top: 7px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .lista-participantes {
+      list-style: none;
+    }
+
+    .lista-participantes li {
+      padding: 9px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    .lista-participantes li:last-child {
+      border-bottom: none;
+    }
+
+    /* SUCESSO */
+
+    .sucesso {
+      text-align: center;
+      padding: 25px 10px;
+    }
+
+    .icone-sucesso {
+      width: 75px;
+      height: 75px;
+      background: rgba(37, 211, 102, 0.12);
+      color: var(--verde);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      margin: 0 auto 20px;
+    }
+
+    .sucesso h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .nome-equipe-confirmacao {
+      display: inline-block;
+      color: var(--azul);
+      font-size: 20px;
+      font-weight: 800;
+      margin: 4px 0 14px;
+    }
+
+    .sucesso p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .teste-aviso {
+      margin-top: 20px;
+      background: #fff7df;
+      border: 1px solid #f1d477;
+      color: #735b00;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .pagina {
+        padding: 20px 10px 35px;
+      }
+
+      .card {
+        padding: 20px 16px;
+        border-radius: 14px;
+      }
+
+      .cabecalho {
+        margin-bottom: 20px;
+      }
+
+      .cabecalho h1 {
+        font-size: 27px;
+      }
+
+      .etapas {
+        width: 100%;
+      }
+
+      .nome-etapa {
+        display: none;
+      }
+
+      .etapa-indicador {
+        max-width: none;
+      }
+
+      .linha-etapa {
+        margin: 0 5px;
+      }
+
+      .circulo {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        font-size: 13px;
+      }
+
+      .titulo-etapa {
+        font-size: 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .botoes {
+        flex-direction: column-reverse;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .btn-principal,
+      .btn-verde {
+        margin-left: 0;
+      }
+
+      .nome-equipe-confirmacao {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="pagina">
+
+    <div class="container">
+
+      <!-- CABEÇALHO -->
+
+      <header class="cabecalho">
+
+        <h1>PESCANDO COM JESUS</h1>
+
+        <p>Inscrição da equipe</p>
+
+      </header>
+
+
+      <!-- INDICADOR DE ETAPAS -->
+
+      <div class="etapas">
+
+        <div class="etapa-indicador ativa" id="indicador1">
+
+          <div class="circulo">
+            1
+          </div>
+
+          <div class="nome-etapa">
+            Equipe
+          </div>
+
+        </div>
+
+
+        <div class="linha-etapa" id="linha1"></div>
+
+
+        <div class="etapa-indicador" id="indicador2">
+
+          <div class="circulo">
+            2
+          </div>
+
+          <div class="nome-etapa">
+            Participantes
+          </div>
+
+        </div>
+
+
+        <div class="linha-etapa" id="linha2"></div>
+
+
+        <div class="etapa-indicador" id="indicador3">
+
+          <div class="circulo">
+            3
+          </div>
+
+          <div class="nome-etapa">
+            Revisão
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARD PRINCIPAL -->
+
+      <section class="card">
+
+
+        <!-- ================================================= -->
+        <!-- ETAPA 1 -->
+        <!-- ================================================= -->
+
+        <div class="etapa-conteudo ativa" id="etapa1">
+
+          <h2 class="titulo-etapa">
+            Dados da equipe
+          </h2>
+
+          <p class="subtitulo">
+            Comece informando os dados da equipe e do capitão.
+          </p>
+
+
+          <h3 class="grupo-titulo">
+            Dados da equipe
+          </h3>
+
+
+          <div class="campo" id="campoNomeEquipe">
+
+            <label for="nomeEquipe">
+              Nome da equipe <span>*</span>
+            </label>
+
+            <input
+              type="text"
+              id="nomeEquipe"
+              placeholder="Ex.: Rancho LM"
+              autocomplete="organization"
+            >
+
+            <div class="mensagem-erro">
+              Informe o nome da equipe.
+            </div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="campo" id="campoCidade">
+
+              <label for="cidade">
+                Cidade <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                id="cidade"
+                placeholder="Ex.: Niquelândia"
+                autocomplete="address-level2"
+              >
+
+              <div class="mensagem-erro">
+                Informe a cidade.
+              </div>
+
+            </div>
+
+
+            <div class="campo" id="campoEstado">
+
+              <label for="estado">
+                Estado <span>*</span>
+              </label>
+
+              <select id="estado">
+
+                <option value="">
+                  Selecione
+                </option>
+
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+
+              </select>
+
+              <div class="mensagem-erro">
+                Selecione o estado.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <h3 class="grupo-titulo">
+            Dados do capitão
+          </h3>
+
+
+          <div class="campo" id="campoNomeCapitao">
+
+            <label for="nomeCapitao">
+              Nome completo <span>*</span>
+            </label>
+
+            <input
+              type="text"
+              id="nomeCapitao"
+              placeholder="Nome completo do capitão"
+              autocomplete="name"
+            >
+
+            <div class="mensagem-erro">
+              Informe o nome do capitão.
+            </div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="campo" id="campoCpfCapitao">
+
+              <label for="cpfCapitao">
+                CPF <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                id="cpfCapitao"
+                placeholder="000.000.000-00"
+                maxlength="14"
+                inputmode="numeric"
+                autocomplete="off"
+              >
+
+              <div class="mensagem-erro">
+                Informe um CPF válido.
+              </div>
+
+            </div>
+
+
+            <div class="campo" id="campoWhatsapp">
+
+              <label for="whatsapp">
+                WhatsApp <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                id="whatsapp"
+                placeholder="(62) 99999-9999"
+                maxlength="15"
+                inputmode="tel"
+                autocomplete="tel"
+              >
+
+              <div class="mensagem-erro">
+                Informe o WhatsApp.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="campo" id="campoEmail">
+
+            <label for="email">
+              E-mail <span>*</span>
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              placeholder="email@exemplo.com"
+              autocomplete="email"
+            >
+
+            <div class="mensagem-erro">
+              Informe um e-mail válido.
+            </div>
+
+          </div>
+
+
+          <div class="aviso">
+
+            <strong>Importante:</strong><br>
+
+            O capitão será o responsável oficial pela equipe e deverá fazer parte dos participantes da inscrição.
+
+          </div>
+
+
+          <div class="botoes">
+
+            <button
+              class="btn btn-principal"
+              type="button"
+              onclick="irParaEtapa2()"
+            >
+              CONTINUAR →
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- ETAPA 2 -->
+        <!-- ================================================= -->
+
+        <div class="etapa-conteudo" id="etapa2">
+
+          <h2 class="titulo-etapa">
+            Participantes da equipe
+          </h2>
+
+          <p class="subtitulo">
+            Sua equipe pode ter de 1 a 3 participantes.
+          </p>
+
+
+          <div id="listaParticipantes"></div>
+
+
+          <button
+            type="button"
+            class="btn-adicionar"
+            id="btnAdicionar"
+            onclick="adicionarParticipante()"
+          >
+            + ADICIONAR PARTICIPANTE
+          </button>
+
+
+          <div class="limite" id="textoLimite">
+            Máximo de 3 participantes por equipe.
+          </div>
+
+
+          <div class="botoes">
+
+            <button
+              class="btn btn-voltar"
+              type="button"
+              onclick="mostrarEtapa(1)"
+            >
+              ← VOLTAR
+            </button>
+
+
+            <button
+              class="btn btn-principal"
+              type="button"
+              onclick="irParaEtapa3()"
+            >
+              CONTINUAR →
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- ETAPA 3 -->
+        <!-- ================================================= -->
+
+        <div class="etapa-conteudo" id="etapa3">
+
+          <h2 class="titulo-etapa">
+            Confirme sua inscrição
+          </h2>
+
+          <p class="subtitulo">
+            Confira todos os dados antes de confirmar.
+          </p>
+
+
+          <div id="resumoInscricao"></div>
+
+
+          <div class="botoes">
+
+            <button
+              class="btn btn-voltar"
+              type="button"
+              onclick="mostrarEtapa(2)"
+            >
+              ← VOLTAR E EDITAR
+            </button>
+
+
+            <button
+              class="btn btn-verde"
+              type="button"
+              onclick="confirmarInscricao()"
+            >
+              CONFIRMAR INSCRIÇÃO
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- CONFIRMAÇÃO -->
+        <!-- ================================================= -->
+
+        <div class="etapa-conteudo" id="etapaSucesso">
+
+          <div class="sucesso">
+
+            <div class="icone-sucesso">
+              ✓
+            </div>
+
+
+            <h2>
+              Inscrição pronta para envio!
+            </h2>
+
+
+            <p>
+              Equipe:
+            </p>
+
+
+            <div
+              class="nome-equipe-confirmacao"
+              id="nomeEquipeConfirmacao"
+            ></div>
+
+
+            <p>
+              Os dados da equipe foram preenchidos e validados com sucesso.
+            </p>
+
+
+            <div class="teste-aviso">
+
+              <strong>VERSÃO DE TESTE</strong><br>
+
+              Esta inscrição ainda não foi registrada no banco de dados.
+              Nesta etapa estamos apenas testando a interface e o funcionamento do formulário.
+
+            </div>
+
+
+            <div class="botoes">
+
+              <button
+                class="btn btn-principal"
+                type="button"
+                onclick="novaInscricao()"
+              >
+                FAZER NOVA INSCRIÇÃO
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    /* =======================================================
+       DADOS TEMPORÁRIOS
+    ======================================================= */
+
+    const inscricao = {
+      equipe: {},
+      capitao: {},
+      participantes: []
+    };
+
+
+    /* =======================================================
+       CONTROLE DE ETAPAS
+    ======================================================= */
+
+    let etapaAtual = 1;
+
+
+    function mostrarEtapa(numero) {
+
+      document
+        .querySelectorAll(".etapa-conteudo")
+        .forEach(function(el) {
+          el.classList.remove("ativa");
+        });
+
+
+      if (numero === "sucesso") {
+
+        document
+          .getElementById("etapaSucesso")
+          .classList.add("ativa");
+
+        document
+          .querySelector(".etapas")
+          .style.display = "none";
+
+        return;
+      }
+
+
+      document
+        .getElementById("etapa" + numero)
+        .classList.add("ativa");
+
+
+      document
+        .querySelector(".etapas")
+        .style.display = "flex";
+
+
+      etapaAtual = numero;
+
+      atualizarIndicadores();
+    }
+
+
+    function atualizarIndicadores() {
+
+      const indicadores = [
+        document.getElementById("indicador1"),
+        document.getElementById("indicador2"),
+        document.getElementById("indicador3")
+      ];
+
+
+      const linhas = [
+        document.getElementById("linha1"),
+        document.getElementById("linha2")
+      ];
+
+
+      indicadores.forEach(function(indicador, index) {
+
+        indicador.classList.remove(
+          "ativa",
+          "concluida"
+        );
+
+
+        const numero = index + 1;
+
+
+        if (numero < etapaAtual) {
+          indicador.classList.add("concluida");
+        }
+
+
+        if (numero === etapaAtual) {
+          indicador.classList.add("ativa");
+        }
+
+      });
+
+
+      linhas.forEach(function(linha, index) {
+
+        linha.classList.toggle(
+          "concluida",
+          index + 1 < etapaAtual
+        );
+
+      });
+
+    }
+
+
+    /* =======================================================
+       VALIDAÇÃO CPF
+    ======================================================= */
+
+    function cpfValido(cpf) {
+
+      cpf = cpf.replace(/\D/g, "");
+
+
+      if (cpf.length !== 11) {
+        return false;
+      }
+
+
+      if (/^(\d)\1+$/.test(cpf)) {
+        return false;
+      }
+
+
+      let soma = 0;
+
+
+      for (let i = 0; i < 9; i++) {
+
+        soma +=
+          parseInt(cpf.charAt(i)) *
+          (10 - i);
+
+      }
+
+
+      let resto =
+        (soma * 10) % 11;
+
+
+      if (resto === 10) {
+        resto = 0;
+      }
+
+
+      if (
+        resto !==
+        parseInt(cpf.charAt(9))
+      ) {
+        return false;
+      }
+
+
+      soma = 0;
+
+
+      for (let i = 0; i < 10; i++) {
+
+        soma +=
+          parseInt(cpf.charAt(i)) *
+          (11 - i);
+
+      }
+
+
+      resto =
+        (soma * 10) % 11;
+
+
+      if (resto === 10) {
+        resto = 0;
+      }
+
+
+      return (
+        resto ===
+        parseInt(cpf.charAt(10))
+      );
+
+    }
+
+
+    /* =======================================================
+       MÁSCARA CPF
+    ======================================================= */
+
+    function aplicarMascaraCPF(input) {
+
+      input.addEventListener(
+        "input",
+        function() {
+
+          let valor =
+            input.value.replace(/\D/g, "");
+
+
+          valor =
+            valor.substring(0, 11);
+
+
+          if (valor.length > 9) {
+
+            valor =
+              valor.replace(
+                /(\d{3})(\d{3})(\d{3})(\d{1,2})/,
+                "$1.$2.$3-$4"
+              );
+
+          } else if (valor.length > 6) {
+
+            valor =
+              valor.replace(
+                /(\d{3})(\d{3})(\d{1,3})/,
+                "$1.$2.$3"
+              );
+
+          } else if (valor.length > 3) {
+
+            valor =
+              valor.replace(
+                /(\d{3})(\d{1,3})/,
+                "$1.$2"
+              );
+
+          }
+
+
+          input.value = valor;
+
+        }
+      );
+
+    }
+
+
+    /* =======================================================
+       MÁSCARA WHATSAPP
+    ======================================================= */
+
+    function aplicarMascaraWhatsapp(input) {
+
+      input.addEventListener(
+        "input",
+        function() {
+
+          let valor =
+            input.value.replace(/\D/g, "");
+
+
+          valor =
+            valor.substring(0, 11);
+
+
+          if (valor.length > 10) {
+
+            valor =
+              valor.replace(
+                /(\d{2})(\d{5})(\d{1,4})/,
+                "($1) $2-$3"
+              );
+
+          } else if (valor.length > 6) {
+
+            valor =
+              valor.replace(
+                /(\d{2})(\d{4})(\d{1,4})/,
+                "($1) $2-$3"
+              );
+
+          } else if (valor.length > 2) {
+
+            valor =
+              valor.replace(
+                /(\d{2})(\d+)/,
+                "($1) $2"
+              );
+
+          } else if (valor.length > 0) {
+
+            valor =
+              "(" + valor;
+
+          }
+
+
+          input.value = valor;
+
+        }
+      );
+
+    }
+
+
+    aplicarMascaraCPF(
+      document.getElementById("cpfCapitao")
+    );
+
+
+    aplicarMascaraWhatsapp(
+      document.getElementById("whatsapp")
+    );
+
+
+    /* =======================================================
+       CONTROLE DE ERROS
+    ======================================================= */
+
+    function definirErro(id, erro) {
+
+      const campo =
+        document.getElementById(id);
+
+
+      if (!campo) {
+        return;
+      }
+
+
+      campo.classList.toggle(
+        "erro",
+        erro
+      );
+
+    }
+
+
+    function limparErros() {
+
+      document
+        .querySelectorAll(".campo")
+        .forEach(function(campo) {
+
+          campo.classList.remove("erro");
+
+        });
+
+    }
+
+
+    /* =======================================================
+       ETAPA 1
+    ======================================================= */
+
+    function validarEtapa1() {
+
+      limparErros();
+
+
+      let valido = true;
+
+
+      const nomeEquipe =
+        document
+        .getElementById("nomeEquipe")
+        .value
+        .trim();
+
+
+      const cidade =
+        document
+        .getElementById("cidade")
+        .value
+        .trim();
+
+
+      const estado =
+        document
+        .getElementById("estado")
+        .value;
+
+
+      const nomeCapitao =
+        document
+        .getElementById("nomeCapitao")
+        .value
+        .trim();
+
+
+      const cpfCapitao =
+        document
+        .getElementById("cpfCapitao")
+        .value;
+
+
+      const whatsapp =
+        document
+        .getElementById("whatsapp")
+        .value
+        .trim();
+
+
+      const email =
+        document
+        .getElementById("email")
+        .value
+        .trim();
+
+
+      if (!nomeEquipe) {
+
+        definirErro(
+          "campoNomeEquipe",
+          true
+        );
+
+        valido = false;
+
+      }
+
+
+      if (!cidade) {
+
+        definirErro(
+          "campoCidade",
+          true
+        );
+
+        valido = false;
+
+      }
+
+
+      if (!estado) {
+
+        definirErro(
+          "campoEstado",
+          true
+        );
+
+        valido = false;
+
+      }
+
+
+      if (!nomeCapitao) {
+
+        definirErro(
+          "campoNomeCapitao",
+          true
+        );
+
+        valido = false;
+
+      }
+
+
+      if (!cpfValido(cpfCapitao)) {
+
+        definirErro(
+          "campoCpfCapitao",
+          true
+        );
+
+        valido = false;
+
+      }
+
+
+      const telefoneNumeros =
+        whatsapp.replace(/\D/g, "");
+
+
+      if (
+        telefoneNumeros.length < 10 ||
+        telefoneNumeros.length > 11
+      ) {
+
+        definirErro(
+          "campoWhatsapp",
+          true
+        );
+
+        valido = false;
+
+      }
+
+
+      const emailValido =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+          email
+        );
+
+
+      if (!emailValido) {
+
+        definirErro(
+          "campoEmail",
+          true
+        );
+
+        valido = false;
+
+      }
+
+
+      if (!valido) {
+        return false;
+      }
+
+
+      inscricao.equipe = {
+
+        nome: nomeEquipe,
+        cidade: cidade,
+        estado: estado
+
+      };
+
+
+      inscricao.capitao = {
+
+        nome: nomeCapitao,
+        cpf: cpfCapitao,
+        whatsapp: whatsapp,
+        email: email
+
+      };
+
+
+      inscricao.participantes = [{
+
+        nome: nomeCapitao,
+        cpf: cpfCapitao,
+        tipo: "CAPITAO"
+
+      }];
+
+
+      return true;
+
+    }
+
+
+    function irParaEtapa2() {
+
+      if (!validarEtapa1()) {
+        return;
+      }
+
+
+      renderizarParticipantes();
+
+      mostrarEtapa(2);
+
+    }
+
+
+    /* =======================================================
+       PARTICIPANTES
+    ======================================================= */
+
+    function adicionarParticipante() {
+
+      if (
+        inscricao.participantes.length >= 3
+      ) {
+        return;
+      }
+
+
+      inscricao.participantes.push({
+
+        nome: "",
+        cpf: "",
+        tipo: "PARTICIPANTE"
+
+      });
+
+
+      renderizarParticipantes();
+
+    }
+
+
+    function removerParticipante(indice) {
+
+      if (indice === 0) {
+        return;
+      }
+
+
+      inscricao.participantes.splice(
+        indice,
+        1
+      );
+
+
+      renderizarParticipantes();
+
+    }
+
+
+    function renderizarParticipantes() {
+
+      const lista =
+        document.getElementById(
+          "listaParticipantes"
+        );
+
+
+      lista.innerHTML = "";
+
+
+      inscricao.participantes.forEach(
+        function(participante, indice) {
+
+          const div =
+            document.createElement("div");
+
+
+          div.className =
+            "participante" +
+            (
+              indice === 0 ?
+              " capitao" :
+              ""
+            );
+
+
+          if (indice === 0) {
+
+            div.innerHTML = `
+
+              <div class="participante-cabecalho">
+
+                <div class="participante-titulo">
+
+                  PARTICIPANTE 1
+
+                  <span class="badge">
+                    CAPITÃO
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="resumo-linha">
+
+                <strong>Nome:</strong>
+
+                ${escapeHtml(
+                  participante.nome
+                )}
+
+              </div>
+
+
+              <div class="resumo-linha">
+
+                <strong>CPF:</strong>
+
+                ${escapeHtml(
+                  participante.cpf
+                )}
+
+              </div>
+
+            `;
+
+          } else {
+
+            div.innerHTML = `
+
+              <div class="participante-cabecalho">
+
+                <div class="participante-titulo">
+
+                  PARTICIPANTE ${indice + 1}
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="btn-remover"
+                  onclick="removerParticipante(${indice})"
+                >
+                  Remover
+                </button>
+
+              </div>
+
+
+              <div
+                class="campo"
+                id="campoParticipanteNome${indice}"
+              >
+
+                <label>
+
+                  Nome completo <span>*</span>
+
+                </label>
+
+
+                <input
+                  type="text"
+                  id="participanteNome${indice}"
+                  placeholder="Nome completo"
+                  value="${escapeAttribute(
+                    participante.nome
+                  )}"
+                >
+
+
+                <div class="mensagem-erro">
+
+                  Informe o nome do participante.
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="campo"
+                id="campoParticipanteCpf${indice}"
+              >
+
+                <label>
+
+                  CPF <span>*</span>
+
+                </label>
+
+
+                <input
+                  type="text"
+                  id="participanteCpf${indice}"
+                  placeholder="000.000.000-00"
+                  maxlength="14"
+                  inputmode="numeric"
+                  value="${escapeAttribute(
+                    participante.cpf
+                  )}"
+                >
+
+
+                <div class="mensagem-erro">
+
+                  Informe um CPF válido.
+
+                </div>
+
+              </div>
+
+            `;
+
+          }
+
+
+          lista.appendChild(div);
+
+
+          if (indice > 0) {
+
+            aplicarMascaraCPF(
+              document.getElementById(
+                "participanteCpf" + indice
+              )
+            );
+
+          }
+
+        }
+      );
+
+
+      const botao =
+        document.getElementById(
+          "btnAdicionar"
+        );
+
+
+      const limite =
+        document.getElementById(
+          "textoLimite"
+        );
+
+
+      if (
+        inscricao.participantes.length >= 3
+      ) {
+
+        botao.style.display = "none";
+
+        limite.textContent =
+          "Limite máximo de 3 participantes atingido.";
+
+      } else {
+
+        botao.style.display = "block";
+
+        limite.textContent =
+          "Máximo de 3 participantes por equipe.";
+
+      }
+
+    }
+
+
+    function validarParticipantes() {
+
+      let valido = true;
+
+
+      inscricao.participantes.forEach(
+        function(participante, indice) {
+
+          if (indice === 0) {
+            return;
+          }
+
+
+          const nomeInput =
+            document.getElementById(
+              "participanteNome" + indice
+            );
+
+
+          const cpfInput =
+            document.getElementById(
+              "participanteCpf" + indice
+            );
+
+
+          const nome =
+            nomeInput.value.trim();
+
+
+          const cpf =
+            cpfInput.value;
+
+
+          participante.nome =
+            nome;
+
+
+          participante.cpf =
+            cpf;
+
+
+          const campoNome =
+            document.getElementById(
+              "campoParticipanteNome" + indice
+            );
+
+
+          const campoCpf =
+            document.getElementById(
+              "campoParticipanteCpf" + indice
+            );
+
+
+          campoNome.classList.remove(
+            "erro"
+          );
+
+
+          campoCpf.classList.remove(
+            "erro"
+          );
+
+
+          if (!nome) {
+
+            campoNome.classList.add(
+              "erro"
+            );
+
+            valido = false;
+
+          }
+
+
+          if (!cpfValido(cpf)) {
+
+            campoCpf.classList.add(
+              "erro"
+            );
+
+            valido = false;
+
+          }
+
+        }
+      );
+
+
+      return valido;
+
+    }
+
+
+    function irParaEtapa3() {
+
+      if (!validarParticipantes()) {
+        return;
+      }
+
+
+      renderizarResumo();
+
+      mostrarEtapa(3);
+
+    }
+
+
+    /* =======================================================
+       RESUMO
+    ======================================================= */
+
+    function renderizarResumo() {
+
+      const resumo =
+        document.getElementById(
+          "resumoInscricao"
+        );
+
+
+      const participantesHtml =
+        inscricao.participantes
+        .map(
+          function(
+            participante,
+            indice
+          ) {
+
+            return `
+
+                <li>
+
+                  <strong>
+                    ${indice + 1}.
+                  </strong>
+
+                  ${escapeHtml(
+                    participante.nome
+                  )}
+
+                  ${
+                    indice === 0
+                      ? " — <strong>CAPITÃO</strong>"
+                      : ""
+                  }
+
+                </li>
+
+              `;
+
+          }
+        )
+        .join("");
+
+
+      resumo.innerHTML = `
+
+        <div class="resumo-bloco">
+
+          <div class="resumo-titulo">
+            Equipe
+          </div>
+
+
+          <div class="resumo-principal">
+
+            ${escapeHtml(
+              inscricao.equipe.nome
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div class="resumo-bloco">
+
+          <div class="resumo-titulo">
+            Localização
+          </div>
+
+
+          <div class="resumo-principal">
+
+            ${escapeHtml(
+              inscricao.equipe.cidade
+            )}
+
+            —
+
+            ${escapeHtml(
+              inscricao.equipe.estado
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div class="resumo-bloco">
+
+          <div class="resumo-titulo">
+            Capitão
+          </div>
+
+
+          <div class="resumo-principal">
+
+            ${escapeHtml(
+              inscricao.capitao.nome
+            )}
+
+          </div>
+
+
+          <div class="resumo-linha">
+
+            CPF:
+            ${escapeHtml(
+              inscricao.capitao.cpf
+            )}
+
+          </div>
+
+
+          <div class="resumo-linha">
+
+            WhatsApp:
+            ${escapeHtml(
+              inscricao.capitao.whatsapp
+            )}
+
+          </div>
+
+
+          <div class="resumo-linha">
+
+            E-mail:
+            ${escapeHtml(
+              inscricao.capitao.email
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div class="resumo-bloco">
+
+          <div class="resumo-titulo">
+            Participantes
+          </div>
+
+
+          <ul class="lista-participantes">
+
+            ${participantesHtml}
+
+          </ul>
+
+        </div>
+
+      `;
+
+    }
+
+
+    /* =======================================================
+       CONFIRMAÇÃO
+    ======================================================= */
+
+    function confirmarInscricao() {
+
+      document
+        .getElementById(
+          "nomeEquipeConfirmacao"
+        )
+        .textContent =
+        inscricao.equipe.nome;
+
+
+      mostrarEtapa("sucesso");
+
+    }
+
+
+    /* =======================================================
+       NOVA INSCRIÇÃO
+    ======================================================= */
+
+    function novaInscricao() {
+
+      document
+        .getElementById(
+          "nomeEquipe"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "cidade"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "estado"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "nomeCapitao"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "cpfCapitao"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "whatsapp"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "email"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "nomeEquipeConfirmacao"
+        )
+        .textContent = "";
+
+
+      limparErros();
+
+
+      inscricao.equipe = {};
+
+      inscricao.capitao = {};
+
+      inscricao.participantes = [];
+
+
+      mostrarEtapa(1);
+
+    }
+
+
+    /* =======================================================
+       SEGURANÇA PARA EXIBIÇÃO
+    ======================================================= */
+
+    function escapeHtml(valor) {
+
+      return String(valor || "")
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
+
+    }
+
+
+    function escapeAttribute(valor) {
+
+      return String(valor || "")
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        );
+
+    }
+
+
+    /* =======================================================
+       INICIALIZAÇÃO
+    ======================================================= */
+
+    renderizarParticipantes();
+
+    atualizarIndicadores();
+
+  </script>
+
+</body>
+
+</html>
